@@ -11,12 +11,14 @@
   //--dark: #1f2828;
   --dark: #121d22;
   //--light: #cca46b;
-  --light: #d89b57;
-  --light-hover: #d3a16a;
+  --light: #d3a16a;
+  --light-hover: #d89b57;
   --green: #445241;
   --white: #f3f3f3;
   --dark-green: #29444b;
   --blue-green: #41636e;
+  --dark-blue: 68, 120, 185;
+  --blur: 5px;
 }
 
 html,
@@ -29,7 +31,7 @@ body {
 #app {
   width: 100%;
   min-height: 100%;
-  background: var(--dark);
+  background: var(--dark) url('/bg.jpg') center / cover;
   display: flex;
   flex-direction: column;
 }
@@ -66,6 +68,7 @@ body {
   }
 
   &__title {
+    padding: 2px;
     color: var(--white);
     font-family: "New Amsterdam", sans-serif;
     font-size: 2rem;
@@ -95,7 +98,8 @@ body {
 
   .feature {
     border-radius: 4px;
-    background: var(--dark-green);
+    backdrop-filter: blur(var(--blur));
+    background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     padding: 1rem;
     min-height: 100px;
@@ -164,11 +168,11 @@ body {
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 0 3px rgba(#d89b57, 0);
+    box-shadow: 0 0 0 3px rgba(#d3a16a, 0);
   }
 
   to {
 
-    box-shadow: 0 0 6px 3px rgba(#d89b57, 1);
+    box-shadow: 0 0 6px 3px rgba(#d3a16a, 1);
   }
 }
