@@ -1,25 +1,35 @@
 // Font families
 // font-family: "New Amsterdam", sans-serif
 // font-family: "Open Sans", sans-serif
+
+@use 'sass:color';
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  //--dark: #1f2828;
-  --dark: #121d22;
-  //--light: #cca46b;
-  --light: #d3a16a;
-  --light-hover: #d89b57;
-  --green: #445241;
-  --white: #f3f3f3;
-  --dark-green: #29444b;
-  --blue-green: #41636e;
-  --dark-blue: 68, 120, 185;
-  --blur: 5px;
-}
+// Drop CSS Vars for SCSS ones
+$dark: #1f2828;
+$light: #cca46b;
+$light-hover: #d89b57;
+$green: #445241;
+$white: #f3f3f3;
+$dark-green: #29444b;
+$blue-green: #41636e;
+$dark-blue: 68, 120, 185;
+$blur: 5px;
+
+$banner-font: "New Amsterdam", sans-serif;
+$body-font: "Oswald", sans-serif;
+
+// Halloween overrides
+$dark: #2c236f;
+$light: color.adjust(#00bd72, $lightness: -5%);
+$light-hover: color.adjust(#595082, $lightness: 10%);
+$light-hover: #00bd72;
+
 
 html,
 body {
@@ -31,9 +41,24 @@ body {
 #app {
   width: 100%;
   min-height: 100%;
-  background: var(--dark) url('/bg.jpg') center / cover;
+  //background: $dark) url('/bg.jpg') center / cover;
+  // Halloween
+  background: $dark url('/halloween-bg.jpg') center / cover;
   display: flex;
   flex-direction: column;
+
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(to bottom, $dark, #000);
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
 }
 
 .main {
@@ -62,15 +87,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid var(--light);
+    border: 3px solid $light;
+    border: 3px solid $light-hover;
 
     animation: glow 2s 0s alternate infinite;
   }
 
   &__title {
     padding: 2px;
-    color: var(--white);
-    font-family: "New Amsterdam", sans-serif;
+    color: $white;
+    font-family: $banner-font;
     font-size: 2rem;
   }
 }
@@ -79,9 +105,9 @@ body {
   padding: 1rem;
   width: 1280px;
   max-width: 100%;
-  font-family: "Oswald", sans-serif;
+  font-family: $body-font;
   font-size: 1.3rem;
-  color: var(--white);
+  color: $white;
   text-align: center;
   margin: 0 auto 1rem;
 }
@@ -93,17 +119,17 @@ body {
   padding: 1rem;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  font-family: "Oswald", sans-serif;
+  font-family: $body-font;
   margin: 0 auto 1rem;
 
   .feature {
     border-radius: 4px;
-    backdrop-filter: blur(var(--blur));
+    backdrop-filter: blur($blur);
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     padding: 1rem;
     min-height: 100px;
-    color: var(--white);
+    color: $white;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -113,9 +139,9 @@ body {
       width: $size;
       height: $size;
 
-      background: var(--light);
-      color: var(--white);
-      fill: var(--white);
+      background: $light;
+      color: $white;
+      fill: $white;
       padding: 6px;
 
       border-radius: 32px;
@@ -136,6 +162,24 @@ body {
   }
 }
 
+.banner {
+  font-family: $banner-font;
+  background: $light;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+
+  .inner {
+    padding: 10px;
+    margin: 0 auto;
+    color: $white;
+    font-size: 1.4rem;
+
+  }
+}
+
 .btn-hold {
   width: 1280px;
   max-width: 100%;
@@ -147,13 +191,13 @@ body {
 
 .btn {
   display: inline-block;
-  background: var(--light);
-  color: var(--white);
+  background: $light;
+  color: $white;
   text-transform: uppercase;
 
   padding: 0.8rem 2.4rem;
 
-  font-family: "Oswald", sans-serif;
+  font-family: $body-font;
   font-size: 1.3rem;
   text-decoration: none;
 
@@ -162,17 +206,17 @@ body {
   transition: background 0.2s ease;
 
   &:hover {
-    background: var(--light-hover);
+    background: $light-hover;
   }
 }
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 0 3px rgba(#d3a16a, 0);
+    box-shadow: 0 0 0 3px rgba($light-hover, 0);
   }
 
   to {
 
-    box-shadow: 0 0 6px 3px rgba(#d3a16a, 1);
+    box-shadow: 0 0 6px 3px rgba($light-hover, 1);
   }
 }
