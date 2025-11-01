@@ -25,10 +25,10 @@ $banner-font: "New Amsterdam", sans-serif;
 $body-font: "Oswald", sans-serif;
 
 // Halloween overrides
-$dark: #2c236f;
-$light: color.adjust(#00bd72, $lightness: -5%);
-$light-hover: color.adjust(#595082, $lightness: 10%);
-$light-hover: #00bd72;
+// $dark: #2c236f;
+// $light: color.adjust(#00bd72, $lightness: -5%);
+// $light-hover: color.adjust(#595082, $lightness: 10%);
+// $light-hover: #00bd72;
 
 
 html,
@@ -41,9 +41,7 @@ body {
 #app {
   width: 100%;
   min-height: 100%;
-  //background: $dark) url('/bg.jpg') center / cover;
-  // Halloween
-  background: $dark url('/halloween-bg.jpg') center / cover;
+  background: $dark url('/bg.jpg') center / cover;
   display: flex;
   flex-direction: column;
 
