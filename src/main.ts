@@ -17,8 +17,8 @@ function makeSnow(snowArr: Snow[], tick: number, c: HTMLCanvasElement) {
       snowArr.push({
         x: Math.random() * c.width,
         y: 0,
-        speed: 2 + Math.random() * 3,
-        radius: Math.random() * 1,
+        speed: 2 + Math.random() * 2,
+        radius: Math.random(),
         color: "white",
       });
     }
