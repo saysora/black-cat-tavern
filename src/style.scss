@@ -2,7 +2,7 @@
 // font-family: "New Amsterdam", sans-serif
 // font-family: "Open Sans", sans-serif
 
-@use 'sass:color';
+@use "sass:color";
 
 * {
   margin: 0;
@@ -21,6 +21,8 @@ $blue-green: #41636e;
 $dark-blue: 68, 120, 185;
 $blur: 5px;
 
+$feature-bg: rgba(255, 255, 255, 0.1);
+
 $banner-font: "New Amsterdam", sans-serif;
 $body-font: "Oswald", sans-serif;
 
@@ -29,27 +31,32 @@ $body-font: "Oswald", sans-serif;
 // $light: color.adjust(#00bd72, $lightness: -5%);
 // $light-hover: color.adjust(#595082, $lightness: 10%);
 // $light-hover: #00bd72;
-
+//
+// Xmas Overrides
+$light: #bc4749;
+$light-hover: #c05152;
+$light: #386641;
+$light-hover: #3e7149;
+//$feature-bg: rgba(242, 233, 209, 0.2);
+//$white: #f2e8cf;
 
 html,
 body {
   width: 100%;
   height: 100%;
-
 }
 
 #app {
   width: 100%;
   min-height: 100%;
-  background: $dark url('/bg.jpg') center / cover;
   display: flex;
   flex-direction: column;
-
+  background: $dark url("/xmas-bg.webp") center / cover;
   position: relative;
   z-index: 1;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     background: linear-gradient(to bottom, $dark, #000);
     opacity: 0.5;
@@ -60,6 +67,8 @@ body {
 }
 
 .main {
+  position: relative;
+  z-index: 3;
   margin: auto;
   width: 100%;
 }
@@ -91,11 +100,25 @@ body {
     animation: glow 2s 0s alternate infinite;
   }
 
+  &__text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+
   &__title {
     padding: 2px;
     color: $white;
     font-family: $banner-font;
     font-size: 2rem;
+  }
+
+  &__subtitle {
+    color: $white;
+    font-family: $banner-font;
+    font-size: 1.3rem;
+    margin-top: 0;
   }
 }
 
@@ -123,8 +146,10 @@ body {
   .feature {
     border-radius: 4px;
     backdrop-filter: blur($blur);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    background: $feature-bg;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.12),
+      0 1px 2px rgba(0, 0, 0, 0.24);
     padding: 1rem;
     min-height: 100px;
     color: $white;
@@ -155,7 +180,7 @@ body {
     }
   }
 
-  @media(max-width: 850px) {
+  @media (max-width: 850px) {
     grid-template-columns: 1fr;
   }
 }
@@ -174,7 +199,6 @@ body {
     margin: 0 auto;
     color: $white;
     font-size: 1.4rem;
-
   }
 }
 
@@ -214,7 +238,15 @@ body {
   }
 
   to {
-
     box-shadow: 0 0 6px 3px rgba($light-hover, 1);
   }
+}
+
+#canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
