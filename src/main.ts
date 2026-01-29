@@ -1,7 +1,6 @@
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
-canvas?.getContext("2d");
 
-console.log(canvas);
+canvas?.getContext("2d");
 
 interface Snow {
   x: number;

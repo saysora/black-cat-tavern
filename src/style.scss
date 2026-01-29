@@ -21,6 +21,8 @@ $blue-green: #41636e;
 $dark-blue: 68, 120, 185;
 $blur: 5px;
 
+$bg-image: "/bg.jpg";
+
 $feature-bg: rgba(255, 255, 255, 0.1);
 
 $banner-font: "New Amsterdam", sans-serif;
@@ -31,14 +33,16 @@ $body-font: "Oswald", sans-serif;
 // $light: color.adjust(#00bd72, $lightness: -5%);
 // $light-hover: color.adjust(#595082, $lightness: 10%);
 // $light-hover: #00bd72;
+// $bg-image: "/halloween-bg.jpg";
 //
 // Xmas Overrides
-$light: #bc4749;
-$light-hover: #c05152;
-$light: #386641;
-$light-hover: #3e7149;
-//$feature-bg: rgba(242, 233, 209, 0.2);
-//$white: #f2e8cf;
+// $light: #bc4749;
+// $light-hover: #c05152;
+// $light: #386641;
+// $light-hover: #3e7149;
+// $feature-bg: rgba(242, 233, 209, 0.2);
+// $white: #f2e8cf;
+// $bg-image: '/xmas-bp.webp';
 
 html,
 body {
@@ -51,7 +55,7 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  background: $dark url("/xmas-bg.webp") center / cover;
+  background: $dark url($bg-image) center / cover;
   position: relative;
   z-index: 1;
 
